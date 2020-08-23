@@ -1,0 +1,103 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="validationsForm" (ngSubmit)="onSubmit(validationsForm.value)">
+    <!-- Roll No -->
+    <ion-item>
+      <ion-label>Roll No</ion-label>
+      <ion-input type="text" formControlName="rollNo"></ion-input>
+    </ion-item>
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validationMessages.rollNo">
+        <div class="error-message" *ngIf="validationsForm.get('rollNo').hasError(validation.type) && (validationsForm.get('rollNo').dirty || validationsForm.get('rollNo').touched)">
+          <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+    <!-- Name -->
+    <ion-item>
+      <ion-label>Name</ion-label>
+      <ion-input type="text" formControlName="name"></ion-input>
+    </ion-item>
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validationMessages.name">
+        <div class="error-message" *ngIf="validationsForm.get('name').hasError(validation.type) && (validationsForm.get('name').dirty || validationsForm.get('name').touched)">
+          <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+    <!-- Address -->
+    <ion-item>
+      <ion-label>Address</ion-label>
+      <ion-input type="text" formControlName="address"></ion-input>
+    </ion-item>
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validationMessages.address">
+        <div class="error-message" *ngIf="validationsForm.get('address').hasError(validation.type) && (validationsForm.get('address').dirty || validationsForm.get('address').touched)">
+          <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+    <!-- Location -->
+    <ion-item>
+      <ion-label>Location</ion-label>
+      <ion-button (click)="location()" expand="block" shape="round">
+        Location
+      </ion-button>
+    </ion-item>
+    <p *ngIf="validationsForm.value.location">{{validationsForm.value.location}}</p>
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validationMessages.location">
+        <div class="error-message" *ngIf="validationsForm.get('location').hasError(validation.type)">
+          <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+    <!-- Mobile -->
+    <ion-item>
+      <ion-label>Mobile</ion-label>
+      <ion-input type="text" formControlName="mobile"></ion-input>
+    </ion-item>
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validationMessages.mobile">
+        <div class="error-message" *ngIf="validationsForm.get('mobile').hasError(validation.type) && (validationsForm.get('mobile').dirty || validationsForm.get('mobile').touched)">
+          <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+    <!-- email -->
+    <ion-item>
+      <ion-label>Email</ion-label>
+      <ion-input type="text" formControlName="email"></ion-input>
+    </ion-item>
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validationMessages.email">
+        <div class="error-message" *ngIf="validationsForm.get('email').hasError(validation.type) && (validationsForm.get('email').dirty || validationsForm.get('email').touched)">
+          <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+    <!-- Photo -->
+    <ion-item>
+      <ion-label>Photo</ion-label>
+      <ion-button (click)="uploadPhoto()" expand="block" shape="round">
+        Upload Photo
+      </ion-button>
+    </ion-item>
+    <div *ngIf="validationsForm.value.photo">
+      <ion-img [src]="validationsForm.value.photo" style="width: 200px; height: 200px;"></ion-img>
+    </div>
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validationMessages.photo">
+        <div class="error-message" *ngIf="validationsForm.get('photo').hasError(validation.type)">
+          <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+    <ion-button color="primary" class="submit-btn" expand="block" type="submit" [disabled]="!validationsForm.valid">Submit data</ion-button>
+  </form>
+</ion-content>
