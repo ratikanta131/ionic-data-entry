@@ -34,3 +34,4 @@ npm-debug.log*
 /.gradle
 .firebase
 /e2e
+/electron
