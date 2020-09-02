@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
-// import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { Plugins, CameraResultType } from '@capacitor/core';
 const { Camera } = Plugins;
 const { Geolocation } = Plugins;
